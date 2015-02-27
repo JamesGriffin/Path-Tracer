@@ -7,7 +7,7 @@ Simple monte carlo path tracer in C++.
  - Obj Model Import
  - Textures (PNG only at the moment)
  - Simple naive KD tree for meshes.
- - Dffuse, specular, and emission material types
+ - Diffuse, specular, and emission material types
  
 ## Compiling and Running
 Only tested on Linux
