@@ -9,15 +9,16 @@ Material::Material(MaterialType t, Vec c, Vec e, Texture tex) {
     m_texture = tex;
 }
 
-MaterialType Material::get_type(){ return m_type; }
+MaterialType Material::get_type() const { return m_type; }
 Vec Material::get_colour() const { return m_colour; }
+
+// Get colour at UV coordinates u,v
 Vec Material::get_colour_at(double u, double v) const {
     if (m_texture.is_loaded())
         return m_texture.get_pixel(u, v);
 
     return m_colour;
 }
-//Vec Material::get_colour_at(double u, double v) const { return m_texture.get_pixel(u, v); }
 Vec Material::get_emission() const { return m_emission; }
 
 Ray Material::get_reflected_ray(const Ray &r, Vec &p, const Vec &n,	unsigned short *Xi) const {

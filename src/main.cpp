@@ -42,9 +42,9 @@ int main(int argc, char *argv[]) {
     scene.add( dynamic_cast<Object*>(new Mesh(Vec(), "../obj/dragon_full.obj", Material(DIFF, Vec(0.9, 0.9, 0.9)))) );
 
 
-    Renderer renderer = Renderer(&scene, &camera);
-    renderer.render(samples);
-    renderer.save_image("render.ppm");
+    Renderer renderer = Renderer(&scene, &camera);  // Create renderer with our scene and camera
+    renderer.render(samples);                       // Render image to pixel buffer
+    renderer.save_image("render.ppm");              // Save image
 
     // Print duration information
     time(&stop);

@@ -14,6 +14,7 @@ Texture::Texture(const char *filename) {
 
 }
 
+// Get pixel at texture coordinates x,y
 Vec Texture::get_pixel(unsigned x, unsigned y) const {
 
     if (!loaded)
@@ -26,6 +27,7 @@ Vec Texture::get_pixel(unsigned x, unsigned y) const {
     return Vec(r, g, b);
 }
 
+// Get pixel at normalised texture coordinates u,v
 Vec Texture::get_pixel(double u, double v) const {
 
     if (!loaded)
@@ -47,6 +49,7 @@ Vec Texture::get_pixel(double u, double v) const {
     }
 }
 
+// Check if texture is loaded
 bool Texture::is_loaded() const {
     return loaded;
 }

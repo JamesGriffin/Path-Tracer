@@ -27,7 +27,6 @@ public:
     int get_height();
     Ray get_ray(int x, int y, bool jitter, unsigned short *Xi);
 
-
 };
 
 #endif //CAMERA_H

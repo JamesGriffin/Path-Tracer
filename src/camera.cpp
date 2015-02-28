@@ -22,12 +22,14 @@ Camera::Camera(Vec position, Vec target, int width, int height) {
 int Camera::get_width() { return m_width; }
 int Camera::get_height() { return m_height; }
 
+// Returns ray from camera origin through pixel at x,y
 Ray Camera::get_ray(int x, int y, bool jitter, unsigned short *Xi) {
 
     double x_jitter;
     double y_jitter;
 
-    if (jitter) { // If jitter == true, jitter point for anti-aliasing
+    // If jitter == true, jitter point for anti-aliasing
+    if (jitter) {
         x_jitter = (erand48(Xi) * m_x_spacing) - m_x_spacing_half;
         y_jitter = (erand48(Xi) * m_y_spacing) - m_y_spacing_half;
 

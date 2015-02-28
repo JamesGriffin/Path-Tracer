@@ -6,7 +6,6 @@
 #include "objects.h"
 
 class Scene {
-
 private:
     std::vector<Object*> m_objects;
 
@@ -15,7 +14,6 @@ public:
     void add(Object *object);
     ObjectIntersection intersect(const Ray &ray);
     Vec trace_ray(const Ray &ray, int depth, unsigned short*Xi);
-
 };
 
 #endif //SCENE_H

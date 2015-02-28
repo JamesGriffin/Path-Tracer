@@ -4,6 +4,7 @@
 #include "vector.h"
 
 class Texture {
+private:
     unsigned width;
     unsigned height;
     bool loaded = false;

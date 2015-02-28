@@ -9,8 +9,10 @@
 #include "material.h"
 
 struct Triangle {
-    Vec v0, v1, v2, e1, e2, n, t0, t1, t2;     // World Space Coordinates
-    Material *m;
+    Vec v0, v1, v2;     // Vertex world space coordinates
+    Vec e1, e2;         // Edge 1 and edge 2 of triangle
+    Vec n, t0, t1, t2;  // Triangle normal and texture coordinates
+    Material *m;        // Pointer to material
 
     Triangle(Vec v0_, Vec v1_, Vec v2_, Vec t0_=Vec(), Vec t1_=Vec(), Vec t2_=Vec(), Material *m_=NULL){
         v0=v0_, v1=v1_, v2=v2_, e1=v1-v0, e2=v2-v0, n=e1.cross(e2).norm();
@@ -18,6 +20,7 @@ struct Triangle {
         m=m_;
     }
 
+    // Returns axis aligned bounding box that contains the triangle
     AABBox get_bounding_box(){
         Vec bl = Vec(
                 std::min (std::min(v0.x, v1.x), v2.x ) ,
@@ -32,11 +35,13 @@ struct Triangle {
 
         return AABBox(bl, tr);
     }
-    
+
+    // Returns the midpoint of the triangle
     Vec get_midpoint(){
         return (v0 + v1 + v2)/3;
     }
 
+    // Checks if ray intersects with triangle. Returns true/false.
     bool intersect(Ray ray, double &t, double tmin, Vec &norm) const {
 
         double u, v, t_temp=0;
@@ -61,7 +66,8 @@ struct Triangle {
         }
         return false;
     }
-    
+
+    // Returns barycentric coordinates of point p on the triangle
     Vec barycentric(Vec p){
         Vec v2_ = p - v0;
         double d00 = e1.dot(e1);
@@ -76,6 +82,7 @@ struct Triangle {
         return Vec(u, v, w);
     }
 
+    // Returns the colour at point p on the triangle
     Vec get_colour_at(Vec p){
         if(m==NULL) return Vec(1,0,1);
 

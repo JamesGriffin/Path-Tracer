@@ -1,4 +1,3 @@
-#include "stdlib.h"
 #include <vector>
 
 #include "vector.h"
@@ -6,7 +5,7 @@
 #include "triangle.h"
 #include "kdtree.h"
 
-
+// Build KD tree for tris
 KDNode* KDNode::build(std::vector<Triangle*> &tris, int depth){
     KDNode* node = new KDNode();
     node->leaf = false;
@@ -31,8 +30,6 @@ KDNode* KDNode::build(std::vector<Triangle*> &tris, int depth){
         node->left->triangles = std::vector<Triangle*>();
         node->right->triangles = std::vector<Triangle*>();
 
-        //printf("%i\n", tris.size());
-
         return node;
     }
 
@@ -44,13 +41,6 @@ KDNode* KDNode::build(std::vector<Triangle*> &tris, int depth){
         node->box.expand(tris[i]->get_bounding_box());
         midpt = midpt + (tris[i]->get_midpoint() * tris_recp);
     }
-
-    //printf("%f %f %f | %f %f %f", node->box.bl.x, node->box.bl.y, node->box.bl.x, node->box.tr.x, node->box.tr.y, node->box.tr.z);
-
-    /*Vec midpt = Vec();
-    for (long i=0; i<tris.size(); i++) {
-        midpt = midpt + (tris[i]->get_midpoint() * (1.0/tris.size()));
-    }*/
 
     std::vector<Triangle*> left_tris;
     std::vector<Triangle*> right_tris;
@@ -84,47 +74,16 @@ KDNode* KDNode::build(std::vector<Triangle*> &tris, int depth){
         node->left->triangles = std::vector<Triangle*>();
         node->right->triangles = std::vector<Triangle*>();
 
-        //printf("%i\n", tris.size());
-
         return node;
     }
 
     node->left = build(left_tris, depth+1);
     node->right = build(right_tris, depth+1);
 
-    //if (left_tris.size() == 0 && right_tris.size() > 0) left_tris = right_tris;
-    //if (right_tris.size() == 0 && left_tris.size() > 0) right_tris = left_tris;
-
-    /*int matches = 0;
-    for (long i=0; i<left_tris.size(); i++) {
-        for (long j=0; j<right_tris.size(); j++) {
-            if (left_tris[i] == right_tris[j])
-                matches++;
-        }
-    }*/
-
-
-    //if (depth < 20 /*|| ((float)matches / left_tris.size() < 0.5 && (float)matches / right_tris.size() < 0.5)*/) {
-    // ^ Old termination criteria ^
-
-    /*if (true && (left_tris.size() > 2 || right_tris.size() > 2)) {    // TODO: improve termination criteria
-        node->left = build(left_tris, depth+1);
-        node->right = build(right_tris, depth+1);
-    }
-    else {
-        node->triangles = tris;
-        printf("%i\n", node->triangles.size());
-        node->leaf = true;
-        node->left = new KDNode();
-        node->right = new KDNode();
-        node->left->triangles = std::vector<Triangle*>();
-        node->right->triangles = std::vector<Triangle*>();
-        //printf("left tris: %i right tris: %i \n", left_tris.size(), right_tris.size());
-    }*/
-
     return node;
 }
 
+// Finds nearest triangle in kd tree that intersects with ray.
 bool KDNode::hit(KDNode *node, const Ray &ray, double &t, double &tmin, Vec &normal, Vec &c) {
     double dist;
     if (node->box.intersection(ray, dist)){
@@ -135,7 +94,6 @@ bool KDNode::hit(KDNode *node, const Ray &ray, double &t, double &tmin, Vec &nor
         bool hit_right = false;
         long tri_idx;
 
-        /*if ( node->left->triangles.size() > 0 || node->right->triangles.size() > 0 ) {*/
         if (!node->leaf) {
             //if ( node->left->triangles.size() > 0 )
                 hit_left = hit(node->left, ray, t, tmin, normal, c);
