@@ -1,4 +1,7 @@
 #include "renderer.h"
+#include "../lib/lodepng/lodepng.h"
+#include <vector>
+#include <iostream>
 
 // Clamp double to min/max of 0/1
 inline double clamp(double x){ return x<0 ? 0 : x>1 ? 1 : x; }
@@ -41,8 +44,21 @@ void Renderer::save_image(const char *file_path) {
     int width = m_camera->get_width();
     int height = m_camera->get_height();
 
-    FILE *f = fopen(file_path, "w");
-    fprintf(f, "P3\n%d %d\n%d\n", width, height, 255);
-    for (int i=0; i<width*height; i++)
-        fprintf(f,"%d %d %d ", toInt(m_pixel_buffer[i].x), toInt(m_pixel_buffer[i].y), toInt(m_pixel_buffer[i].z));
+    std::vector<unsigned char> pixel_buffer;
+
+    int pixel_count = width*height;
+
+    for (int i=0; i<pixel_count; i++) {
+        pixel_buffer.push_back(toInt(m_pixel_buffer[i].x));
+        pixel_buffer.push_back(toInt(m_pixel_buffer[i].y));
+        pixel_buffer.push_back(toInt(m_pixel_buffer[i].z));
+        pixel_buffer.push_back(255);
+    }
+
+    //Encode the image
+    unsigned error = lodepng::encode(file_path, pixel_buffer, width, height);
+    //if there's an error, display it
+    if(error) std::cout << "encoder error " << error << ": "<< lodepng_error_text(error) << std::endl;
+
+    pixel_buffer.clear();
 }

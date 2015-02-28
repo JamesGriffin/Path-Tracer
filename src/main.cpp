@@ -45,7 +45,7 @@ int main(int argc, char *argv[]) {
 
     Renderer renderer = Renderer(&scene, &camera);  // Create renderer with our scene and camera
     renderer.render(samples);                       // Render image to pixel buffer
-    renderer.save_image("render.ppm");              // Save image
+    renderer.save_image("render.png");              // Save image
 
     // Print duration information
     time(&stop);
