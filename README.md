@@ -10,7 +10,7 @@ Simple monte carlo path tracer in C++.
  - Diffuse, specular, and emission material types
  
 ## Compiling and Running
-Only tested on Linux. Requires cmake and OpenMP for multithreading.
+Requires cmake and OpenMP for multithreading.
 
 Compile:
 ```
