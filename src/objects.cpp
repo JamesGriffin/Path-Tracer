@@ -57,7 +57,7 @@ Mesh::Mesh(Vec p_, const char* file_path, Material m_) {
 		std::cerr << err << std::endl;
 		exit(1);
 	}
-	printf(" └─ Generating k-d tree...\n\n");
+	printf(" - Generating k-d tree...\n\n");
 
     long shapes_size, indices_size, materials_size;
     shapes_size = m_shapes.size();

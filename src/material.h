@@ -1,10 +1,14 @@
 #ifndef MATERIAL_H
 #define MATERIAL_H
 
+#include "../lib/rand48/erand48.h"
 #include "vector.h"
 #include "ray.h"
 #include "texture.h"
 
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
 
 enum MaterialType { DIFF, SPEC, EMIT };
 
