@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cmath>
+#include <stdexcept>
 
 #include "texture.h"
 #include "../lib/lodepng/lodepng.h"
