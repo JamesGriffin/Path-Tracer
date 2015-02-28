@@ -10,7 +10,7 @@ Simple monte carlo path tracer in C++.
  - Diffuse, specular, and emission material types
  
 ## Compiling and Running
-Only tested on Linux
+Only tested on Linux. Requires cmake and OpenMP for multithreading.
 
 Compile:
 ```
@@ -23,6 +23,8 @@ Run:
 ```
 $ ./pathtracer <number of samples>
 ```
+This will render the Stanford Dragon scene which is included.
+Take a look at src/main.cpp to see how to create a scene amd import objs.
 
 ## Sample Images
 ![Dabrovic Sponza](doc/example_renders/sponza.png?raw=true "Dabrovic Sponza")
