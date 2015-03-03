@@ -5,7 +5,7 @@
 #include "ray.h"
 #include "material.h"
 #include "objects.h"
-//#lib "../lib/fastbvh/BVH.h"
+//#include "../lib/fastbvh/BVH.h"
 
 
 ObjectIntersection::ObjectIntersection(bool hit_, double u_, Vec n_, Material m_)

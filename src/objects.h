@@ -7,7 +7,7 @@
 #include "kdtree.h"
 #include "material.h"
 #include "../lib/tiny_obj_loader/tiny_obj_loader.h"
-//#lib "../lib/fastbvh/BVH.h"
+//#include "../lib/fastbvh/BVH.h"
 
 struct ObjectIntersection {
 	bool hit;	// If there was an intersection
