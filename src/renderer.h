@@ -1,4 +1,4 @@
-#ifndef Renderer
+#ifndef RENDERER_H
 #define RENDERER_H
 
 #include "vector.h"
