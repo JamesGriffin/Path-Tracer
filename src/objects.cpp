@@ -1,5 +1,6 @@
 #include <math.h>
 #include <iostream>
+#include <stdio.h>
 
 #include "vector.h"
 #include "ray.h"

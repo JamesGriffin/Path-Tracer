@@ -1,7 +1,9 @@
+#include <vector>
+#include <stdio.h>
+#include <iostream>
+
 #include "renderer.h"
 #include "../lib/lodepng/lodepng.h"
-#include <vector>
-#include <iostream>
 
 // Clamp double to min/max of 0/1
 inline double clamp(double x){ return x<0 ? 0 : x>1 ? 1 : x; }
