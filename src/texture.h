@@ -1,6 +1,6 @@
 #ifndef TEXTURE_H
 #define TEXTURE_H
-
+#include <vector>
 #include "vector.h"
 
 class Texture {

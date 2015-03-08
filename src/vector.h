@@ -1,8 +1,8 @@
 #ifndef VECTOR_H
 #define VECTOR_H
-
 #include <algorithm>
 #include <math.h>
+#include <stdint.h>
 
 // Vector 3
 struct Vec {

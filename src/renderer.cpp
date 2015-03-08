@@ -23,7 +23,7 @@ void Renderer::render(int samples) {
 
     // Main Loop
     #pragma omp parallel for schedule(dynamic, 1)       // OpenMP
-    for (unsigned short y=0; y<height; y++){
+    for (int y=0; y<height; y++){
         unsigned short Xi[3]={0,0,y*y*y};               // Stores seed for erand48
 
         fprintf(stderr, "\rRendering (%i samples): %.2f%% ",      // Prints

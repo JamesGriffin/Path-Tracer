@@ -1,7 +1,9 @@
 cmake_minimum_required(VERSION 2.8.4)
 project(pathtracer)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -Wno-narrowing -march=native -m64 -O3 -static -funroll-loops")
+if(NOT "${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -Wno-narrowing -march=native -m64 -O3 -static -funroll-loops")
+endif()
 
 FIND_PACKAGE( OpenMP REQUIRED)
 if(OPENMP_FOUND)

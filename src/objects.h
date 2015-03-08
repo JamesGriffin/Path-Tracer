@@ -23,7 +23,7 @@ class Object {
 
 public:
 	Vec m_p; // Position
-	virtual ObjectIntersection get_intersection(const Ray &r){};
+	virtual ObjectIntersection get_intersection(const Ray &r) = 0;
 };
 
 
