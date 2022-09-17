@@ -24,7 +24,7 @@ Run:
 $ ./pathtracer <number of samples>
 ```
 This will render the Stanford Dragon scene which is included.
-Take a look at src/main.cpp to see how to create a scene amd import objs.
+Take a look at src/main.cpp to see how to create a scene and import objs.
 
 ## Sample Images
 ![Dabrovic Sponza](doc/example_renders/sponza.png?raw=true "Dabrovic Sponza")
